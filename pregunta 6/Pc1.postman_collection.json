@@ -8,12 +8,12 @@
   },
   "item": [
     {
-      "name": "Get",
+      "name": "TipoServicio_Get",
       "request": {
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "https://localhost:7220/api/cliente",
+          "raw": "https://localhost:7220/api/TipoServicio",
           "protocol": "https",
           "host": [
             "localhost"
@@ -21,20 +21,40 @@
           "port": "7220",
           "path": [
             "api",
-            "cliente"
+            "TipoServicio"
           ]
         }
       },
       "response": []
     },
     {
-      "name": "Post",
+      "name": "OrdenServicio_Get",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://localhost:7220/api/OrdenServicio",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7220",
+          "path": [
+            "api",
+            "OrdenServicio"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TipoServicio_Post",
       "request": {
         "method": "POST",
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"paterno\": \"Perez\",\r\n  \"materno\": \"Gomez\",\r\n  \"nombres\": \"Cliente de prueba\",\r\n  \"correo\": \"prueba@example.com\",\r\n  \"telefono\": \"987654321\"\r\n}",
+          "raw": "{\r\n  \"nombre\": \"Servicio de prueba\",\r\n  \"precioBase\": 150.00\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -42,7 +62,7 @@
           }
         },
         "url": {
-          "raw": "https://localhost:7220/api/cliente",
+          "raw": "https://localhost:7220/api/TipoServicio",
           "protocol": "https",
           "host": [
             "localhost"
@@ -50,20 +70,49 @@
           "port": "7220",
           "path": [
             "api",
-            "cliente"
+            "TipoServicio"
           ]
         }
       },
       "response": []
     },
     {
-      "name": "Put",
+      "name": "OrdenServicio_Post",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"descripcionProblema\": \"El vehículo necesita cambio de aceite\",\r\n  \"costoEstimado\": 120.00,\r\n  \"estado\": \"Pendiente\",\r\n  \"vehiculoId\": 1,\r\n  \"tipoServicioId\": 1\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://localhost:7220/api/OrdenServicio",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7220",
+          "path": [
+            "api",
+            "OrdenServicio"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TipoServicio_Put",
       "request": {
         "method": "PUT",
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"id\": 5,\r\n  \"paterno\": \"Perez\",\r\n  \"materno\": \"Gomez\",\r\n  \"nombres\": \"Cliente actualizado\",\r\n  \"correo\": \"prueba@example.com\",\r\n  \"telefono\": \"999888777\"\r\n}",
+          "raw": "{\r\n  \"id\": 6,\r\n  \"nombre\": \"Servicio actualizado\",\r\n  \"precioBase\": 180.00\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -71,7 +120,7 @@
           }
         },
         "url": {
-          "raw": "https://localhost:7220/api/cliente/7",
+          "raw": "https://localhost:7220/api/TipoServicio/6",
           "protocol": "https",
           "host": [
             "localhost"
@@ -79,20 +128,29 @@
           "port": "7220",
           "path": [
             "api",
-            "cliente",
-            "7"
+            "TipoServicio",
+            "6"
           ]
         }
       },
       "response": []
     },
     {
-      "name": "Delete",
+      "name": "OrdenServicio_Put",
       "request": {
-        "method": "DELETE",
+        "method": "PUT",
         "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"id\": 6,\r\n  \"descripcionProblema\": \"Cambio de aceite y revisión\",\r\n  \"costoEstimado\": 150.00,\r\n  \"estado\": \"En proceso\",\r\n  \"vehiculoId\": 1,\r\n  \"tipoServicioId\": 1\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
         "url": {
-          "raw": "https://localhost:7220/api/cliente/7",
+          "raw": "https://localhost:7220/api/OrdenServicio/6",
           "protocol": "https",
           "host": [
             "localhost"
@@ -100,8 +158,50 @@
           "port": "7220",
           "path": [
             "api",
-            "cliente",
-            "7"
+            "OrdenServicio",
+            "6"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TipoServicio_Delete",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "https://localhost:7220/api/TipoServicio/6",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7220",
+          "path": [
+            "api",
+            "TipoServicio",
+            "6"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "OrdenServicio_Delete",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "https://localhost:7220/api/OrdenServicio/6",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7220",
+          "path": [
+            "api",
+            "OrdenServicio",
+            "6"
           ]
         }
       },
