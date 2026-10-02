@@ -1,0 +1,204 @@
+/* ============================================
+   BASE DE DATOS - TALLER MECANICO
+   SQL SERVER
+   ============================================ */
+
+CREATE DATABASE TallerMecanico;
+GO
+
+USE TallerMecanico;
+GO
+
+
+/* ============================================
+   TABLA: TipoServicio
+   ============================================ */
+
+CREATE TABLE TipoServicio (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Nombre VARCHAR(100) NOT NULL,
+    PrecioBase DECIMAL(10,2) NOT NULL
+);
+GO
+
+
+/* ============================================
+   TABLA: Cliente
+   ============================================ */
+
+CREATE TABLE Cliente (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Paterno VARCHAR(50) NOT NULL,
+    Materno VARCHAR(50) NOT NULL,
+    Nombres VARCHAR(100) NOT NULL,
+    Correo VARCHAR(150) NOT NULL,
+    Telefono VARCHAR(20) NOT NULL
+);
+GO
+
+
+/* ============================================
+   TABLA: Vehiculo
+   ============================================ */
+
+CREATE TABLE Vehiculo (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Placa VARCHAR(10) NOT NULL,
+    Marca VARCHAR(50) NOT NULL,
+    Modelo VARCHAR(50) NOT NULL,
+    Anio INT NOT NULL,
+    ClienteId INT NOT NULL,
+
+    CONSTRAINT FK_Vehiculo_Cliente
+        FOREIGN KEY (ClienteId)
+        REFERENCES Cliente(Id)
+);
+GO
+
+
+/* ============================================
+   TABLA: OrdenServicio
+   ============================================ */
+
+CREATE TABLE OrdenServicio (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    FechaIngreso DATETIME NOT NULL DEFAULT GETDATE(),
+    DescripcionProblema VARCHAR(500) NOT NULL,
+    CostoEstimado DECIMAL(10,2) NOT NULL,
+    Estado VARCHAR(30) NOT NULL,
+    VehiculoId INT NOT NULL,
+    TipoServicioId INT NOT NULL,
+
+    CONSTRAINT FK_OrdenServicio_Vehiculo
+        FOREIGN KEY (VehiculoId)
+        REFERENCES Vehiculo(Id),
+
+    CONSTRAINT FK_OrdenServicio_TipoServicio
+        FOREIGN KEY (TipoServicioId)
+        REFERENCES TipoServicio(Id)
+);
+GO
+
+USE TallerMecanico;
+GO
+
+/* ============================================
+   DATOS INICIALES: TipoServicio
+   ============================================ */
+
+INSERT INTO TipoServicio (Nombre, PrecioBase)
+VALUES
+    ('Cambio de aceite', 120.00),
+    ('Alineamiento y balanceo', 150.00),
+    ('Mantenimiento de frenos', 250.00),
+    ('Revision de motor', 300.00),
+    ('Mantenimiento general', 450.00);
+GO
+
+
+/* ============================================
+   DATOS INICIALES: Cliente
+   ============================================ */
+
+INSERT INTO Cliente (Paterno, Materno, Nombres, Correo, Telefono)
+VALUES
+    ('Ramirez', 'Lopez', 'Carlos Alberto', 'carlos@gmail.com', '987654321'),
+    ('Torres', 'Gomez', 'Maria Fernanda', 'maria@gmail.com', '956123789'),
+    ('Castro', 'Rojas', 'Luis Eduardo', 'luis@gmail.com', '912345678'),
+    ('Mendoza', 'Flores', 'Ana Lucia', 'ana@gmail.com', '965478123');
+GO
+
+
+/* ============================================
+   DATOS INICIALES: Vehiculo
+
+   ClienteId:
+   1 = Carlos
+   2 = Maria
+   3 = Luis
+   4 = Ana
+   ============================================ */
+
+INSERT INTO Vehiculo (Placa, Marca, Modelo, Anio, ClienteId)
+VALUES
+    ('ABC-123', 'Toyota', 'Corolla', 2020, 1),
+    ('XYZ-456', 'Hyundai', 'Accent', 2019, 2),
+    ('DEF-789', 'Kia', 'Rio', 2021, 3),
+    ('GHI-321', 'Nissan', 'Sentra', 2018, 4),
+
+    -- Carlos tiene un segundo vehiculo
+    ('JKL-654', 'Chevrolet', 'Spark', 2017, 1);
+GO
+
+
+/* ============================================
+   DATOS INICIALES: OrdenServicio
+
+   Estados de ejemplo:
+   Pendiente
+   En proceso
+   Finalizado
+   ============================================ */
+
+INSERT INTO OrdenServicio
+(
+    FechaIngreso,
+    DescripcionProblema,
+    CostoEstimado,
+    Estado,
+    VehiculoId,
+    TipoServicioId
+)
+VALUES
+(
+    '2026-10-01 08:30:00',
+    'El vehiculo necesita cambio de aceite.',
+    120.00,
+    'Pendiente',
+    1,
+    1
+),
+(
+    '2026-10-01 09:15:00',
+    'El vehiculo presenta problemas de alineamiento.',
+    150.00,
+    'En proceso',
+    2,
+    2
+),
+(
+    '2026-09-30 10:00:00',
+    'Se escucha ruido al momento de frenar.',
+    250.00,
+    'Finalizado',
+    3,
+    3
+),
+(
+    '2026-10-01 11:30:00',
+    'El motor presenta ruidos inusuales.',
+    300.00,
+    'En proceso',
+    4,
+    4
+),
+(
+    '2026-10-01 14:00:00',
+    'El vehiculo requiere mantenimiento preventivo general.',
+    450.00,
+    'Pendiente',
+    5,
+    5
+);
+GO
+
+
+/* ============================================
+   VERIFICAR LOS DATOS
+   ============================================ */
+
+SELECT * FROM TipoServicio;
+SELECT * FROM Cliente;
+SELECT * FROM Vehiculo;
+SELECT * FROM OrdenServicio;
+GO

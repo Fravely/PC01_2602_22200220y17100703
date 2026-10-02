@@ -1,0 +1,21 @@
+1.¿Qué dificultades tuviste durante el scaffolding y cómo las solucionaste? 
+Durante el scaffolding tuve algunas dificultades para entender las instrucciones 
+y ordenar mis ideas. Lo solucioné leyendo las indicaciones con calma.
+tuvimos error con server y el database porque cada pc era diferente pero al final lo solucionamos.
+Scaffold-DBContext "Server=localhost;Database=TallerMecanico;Integrated Security=true;TrustServerCertificate=
+True" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Force -nopluralize
+
+2. ¿Qué diferencias notaste entre usar un controlador autogenerado y uno con repository? ¿Qué enfoque prefieres? 
+La diferencia principal es que el controlador autogenerado es más rápido y sencillo, porque tiene 
+todo lo necesario para hacer las operaciones básicas. En cambio, el controlador con repository separa 
+mejor la lógica y hace que el código sea más ordenado y fácil de mantener.
+Preferemimos usar repository, porque permite organizar mejor el proyecto y facilita hacer cambios.
+
+3. ¿Qué buenas prácticas implementaste (en código real) y por qué? 
+Implementamos buenas prácticas como separar la lógica usando un repository, mantener el código ordenado 
+y usar nombres claros para las variables y métodos. También tratamos de evitar repetir código. 
+Lo hicimos porque así el proyecto es más fácil de entender, mantener y modificar cuando sea necesario.
+
+4. ¿Usaste herramientas de IA en esta práctica? (Tranquilo(a) que si es válido) ¿Qué herramientas usaste y en que parte del proyecto?
+Sí, utilizamos herramientas de IA como ChatGPT y elagente de github(copilot) apoyo durante la práctica. Las usé principalmente para resolver
+algunas dudas sobre el código, entender mejor el uso del repository y corregir algunos errores. 
