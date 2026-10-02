@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="PC1Web/PC1Web.API.csproj" />
+  <Project Path="Core/PC1Web.CORE.csproj" />
+</Solution>

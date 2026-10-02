@@ -1,0 +1,22 @@
+using Microsoft.EntityFrameworkCore;
+using PC1Web.CORE.Core.Interfaces;
+using PC1Web.CORE.Infrastructure.Data;
+using PC1Web.CORE.Infrastructure.Repositories;
+using PC1Web.CORE.Infrastructure.Services;
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<TallerMecanicoContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("TallerMecanico")));
+builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
+builder.Services.AddScoped<IClienteService, ClienteService>();
+builder.Services.AddScoped<IVehiculoRepository, VehiculoRepository>();
+builder.Services.AddScoped<IVehiculoService, VehiculoService>();
+builder.Services.AddScoped<IOrdenServicioRepository, OrdenServicioRepository>();
+builder.Services.AddScoped<IOrdenServicioService, OrdenServicioService>();
+builder.Services.AddControllers();
+builder.Services.AddOpenApi();
+var app = builder.Build();
+if (app.Environment.IsDevelopment()) app.MapOpenApi();
+app.UseHttpsRedirection();
+app.UseAuthorization();
+app.MapControllers();
+app.Run();

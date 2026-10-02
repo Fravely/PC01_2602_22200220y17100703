@@ -1,0 +1,13 @@
+@baseUrl = http://localhost:5117
+
+### Listar tipos de servicio
+GET {{baseUrl}}/api/TipoServicio
+
+### Listar clientes
+GET {{baseUrl}}/api/Cliente
+
+### Listar vehículos
+GET {{baseUrl}}/api/Vehiculo
+
+### Listar órdenes
+GET {{baseUrl}}/api/OrdenServicio

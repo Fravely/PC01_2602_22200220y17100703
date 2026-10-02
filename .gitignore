@@ -1,0 +1,9 @@
+**/bin/
+**/obj/
+.vs/
+*.csproj.user
+work/
+docs/
+postman/
+database/
+scripts/
