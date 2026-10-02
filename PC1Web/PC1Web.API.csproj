@@ -5,8 +5,6 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.12"><PrivateAssets>all</PrivateAssets></PackageReference>
     <ProjectReference Include="../Core/PC1Web.CORE.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BD\" />
-  </ItemGroup>
 </Project>
+
 
