@@ -13,7 +13,16 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": ""
+          "raw": "https://localhost:7220/api/cliente",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7220",
+          "path": [
+            "api",
+            "cliente"
+          ]
         }
       },
       "response": []
@@ -62,7 +71,7 @@
           }
         },
         "url": {
-          "raw": "https://localhost:7220/api/cliente/5",
+          "raw": "https://localhost:7220/api/cliente/7",
           "protocol": "https",
           "host": [
             "localhost"
@@ -71,7 +80,7 @@
           "path": [
             "api",
             "cliente",
-            "5"
+            "7"
           ]
         }
       },
@@ -83,7 +92,7 @@
         "method": "DELETE",
         "header": [],
         "url": {
-          "raw": "https://localhost:7220/api/cliente/5",
+          "raw": "https://localhost:7220/api/cliente/7",
           "protocol": "https",
           "host": [
             "localhost"
@@ -92,7 +101,7 @@
           "path": [
             "api",
             "cliente",
-            "5"
+            "7"
           ]
         }
       },
